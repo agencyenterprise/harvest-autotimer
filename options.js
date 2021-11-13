@@ -1,20 +1,12 @@
 const PROPS = ["harvest_token", "harvest_account_id"];
 
-function saveSettings(event) {
-  const settings = {};
-  PROPS.forEach(
-    (prop) => (settings[prop] = document.getElementById(prop).value)
-  );
-  chrome.storage.local.set({ settings });
-}
-
-function initSettings() {
+function saveSettings() {
   chrome.storage.local.get("settings", (data) => {
+    const settings = data.settings;
     PROPS.forEach(
-      (prop) =>
-        (document.getElementById(prop).value = data?.settings?.[prop] || "")
+      (prop) => (settings[prop] = document.getElementById(prop).value)
     );
-    document.getElementById("save").addEventListener("click", saveSettings);
+    chrome.storage.local.set({ settings });
   });
 }
 
@@ -29,4 +21,4 @@ document
     }
   });
 
-initSettings();
+document.getElementById("save").addEventListener("click", saveSettings);

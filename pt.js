@@ -1,10 +1,22 @@
 document.addEventListener("click", clickHandler);
 
+function isEnabled() {
+  return new Promise((resolve, reject) => {
+    chrome.storage.local.get("settings", (data) => {
+      resolve(data.settings.enabled);
+    });
+  });
+}
+
 function getSettings() {
   return new Promise((resolve, reject) => {
     chrome.storage.local.get("settings", (data) => {
-      if (!('settings' in data) || !('harvest_token' in data.settings) || !('harvest_account_id' in data.settings)) {
-          reject("Harvest keys missing. Set it on extension options.")
+      if (
+        !("settings" in data) ||
+        !("harvest_token" in data.settings) ||
+        !("harvest_account_id" in data.settings)
+      ) {
+        reject("Harvest keys missing. Set it on extension options.");
       }
       resolve(data.settings);
     });
@@ -20,7 +32,9 @@ async function getDefaultHeaders() {
   });
 }
 
-function clickHandler(event) {
+async function clickHandler(event) {
+  const enabled = await isEnabled();
+  if (!enabled) return;
   //button and dropdown selectors
   const selectors = {
     ".button.state": stateButtonClick,

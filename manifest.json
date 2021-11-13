@@ -18,5 +18,8 @@
       "all_frames": true,
       "js": [ "pt.js" ]
     }
-  ]
+  ],
+  "action": {
+    "default_title": "Settings"
+  } 
 }
