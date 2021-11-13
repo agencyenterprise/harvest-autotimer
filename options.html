@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <h1>Settings</h1>
+    <h2>Harvest <a href="#" class="help-icon" id="harvest_help">?</a></h2>
+    <div id="harvest_help_box" style="display: none">
+      To obtain this data on Harvest, go to
+      <a href="https://id.getharvest.com/developers" target="_blank"
+        >developers page</a
+      >.<br />
+      On "Personal access tokens", click on "Create new personal access
+      token".<br />
+      Fill with any name you want and click on "Create personal access
+      token".<br />
+      On the "Your personal access token" box, copy the Token and Account ID and
+      paste on the fields below.<br />
+      Save!
+    </div>
+    <div>
+      <label for="harvest_token">Token</label>
+      <input type="text" id="harvest_token" name="harvest_token" />
+    </div>
+    <div>
+      <label for="harvest_user">Account ID</label>
+      <input type="text" id="harvest_account_id" name="harvest_account_id" />
+    </div>
+    <button id="save">Save</button>
+  </body>
+  <script src="options.js"></script>
+</html>
