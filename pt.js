@@ -32,9 +32,7 @@ async function getDefaultHeaders() {
   });
 }
 
-async function clickHandler(event) {
-  const enabled = await isEnabled();
-  if (!enabled) return;
+function clickHandler(event) {
   //button and dropdown selectors
   const selectors = {
     ".button.state": stateButtonClick,
@@ -45,7 +43,7 @@ async function clickHandler(event) {
     for (const selector in selectors) {
       if (el.matches(selector)) {
         selectors[selector](el);
-        break;
+        return;
       }
     }
   } while ((el = el.parentNode) && el.matches);
@@ -111,6 +109,8 @@ function getDate() {
 }
 
 async function startStory(info) {
+  const enabled = await isEnabled();
+  if (!enabled) return;
   const ids = await getHarvestProjectTaskIds();
   const newTimeEntryData = {
     ...ids,
@@ -123,6 +123,8 @@ async function startStory(info) {
 }
 
 async function finishStory(info) {
+  const enabled = await isEnabled();
+  if (!enabled) return;
   const harvestId = await getPTHarvestRelation(info.id);
   fetch(`https://api.harvestapp.com/api/v2/time_entries/${harvestId}/stop`, {
     method: "PATCH",
