@@ -1,7 +1,7 @@
 {
   "name": "PivotalTracker -> Harvest",
   "description": "Auto start/stop a timer on harvest when starting and finishing stories on Pivotal Tracker.",
-  "version": "1.0",
+  "version": "1.1",
   "manifest_version": 3,
   "permissions": ["activeTab", "storage", "scripting"],
   "background": {
