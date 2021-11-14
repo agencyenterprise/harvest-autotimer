@@ -34,7 +34,9 @@ function isHarvestSet() {
       if (
         !("settings" in data) ||
         !("harvest_token" in data.settings) ||
-        !("harvest_account_id" in data.settings)
+        !("harvest_account_id" in data.settings) ||
+        data.settings.harvest_token.length === 0 ||
+        data.settings.harvest_account_id.length === 0
       ) {
         reject("Harvest keys missing. Set it on extension options.");
       }

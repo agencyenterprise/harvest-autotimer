@@ -4,9 +4,18 @@ function saveSettings() {
   chrome.storage.local.get("settings", (data) => {
     const settings = data.settings;
     PROPS.forEach(
-      (prop) => (settings[prop] = document.getElementById(prop).value)
+      (prop) => (settings[prop] = document.getElementById(prop).value.trim())
     );
     chrome.storage.local.set({ settings });
+  });
+}
+
+function fillSettings() {
+  chrome.storage.local.get("settings", (data) => {
+    PROPS.forEach(
+      (prop) =>
+        (document.getElementById(prop).value = data?.settings?.[prop] || "")
+    );
   });
 }
 
@@ -22,3 +31,4 @@ document
   });
 
 document.getElementById("save").addEventListener("click", saveSettings);
+fillSettings();
