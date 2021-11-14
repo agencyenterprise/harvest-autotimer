@@ -38,3 +38,17 @@ a.help-icon {
   padding: 10px;
   margin-bottom: 10px;
 }
+#message {
+  display: none;
+  padding: 10px;
+  margin-top: 10px;
+}
+#message.error {
+  background-color: #ffcccc;
+  display: block;
+}
+
+#message.success {
+  background-color: #99cc99;
+  display: block;
+}

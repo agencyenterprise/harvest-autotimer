@@ -27,7 +27,7 @@ chrome.runtime.onInstalled.addListener(function () {
   });
 
   initSettings();
-  chrome.tabs.create({ url: chrome.runtime.getURL("options.html") });
+  openSettings();
   updateIcon();
 });
 
@@ -54,6 +54,14 @@ function initSettings() {
     };
     chrome.storage.local.set({ settings });
   });
+}
+
+async function openSettings() {
+  try {
+    await isHarvestSet();
+  } catch (err) {
+    chrome.tabs.create({ url: chrome.runtime.getURL("options.html") });
+  }
 }
 
 function isHarvestSet() {
@@ -97,9 +105,7 @@ function updateIcon() {
 
 function setIcon(enabled) {
   const icon = enabled ? "images/icon48.png" : "images/icon48_disabled.png";
-  chrome.action.setIcon(
-    {
-      path: icon,
-    }
-  );
+  chrome.action.setIcon({
+    path: icon,
+  });
 }
