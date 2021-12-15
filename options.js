@@ -1,14 +1,22 @@
-const PROPS = ["harvest_token", "harvest_account_id"];
+const PROPS = {
+  harvest_token: "text",
+  harvest_account_id: "text",
+  enabled: "checkbox",
+};
 
 async function saveSettings() {
   try {
     const name = await testHarvestKeys();
-
     chrome.storage.local.get("settings", (data) => {
       const settings = data.settings;
-      PROPS.forEach(
-        (prop) => (settings[prop] = document.getElementById(prop).value.trim())
-      );
+      Object.keys(PROPS).forEach((propKey) => {
+        const propType = PROPS[propKey];
+        if (propType === "checkbox") {
+          settings[propKey] = document.getElementById(propKey).checked;
+        } else if (propType === "text") {
+          settings[propKey] = document.getElementById(propKey).value.trim();
+        }
+      });
       chrome.storage.local.set({ settings }, () => {
         showMessage(`Keys for user ${name} saved!`);
       });
@@ -20,10 +28,14 @@ async function saveSettings() {
 
 function fillSettings() {
   chrome.storage.local.get("settings", (data) => {
-    PROPS.forEach(
-      (prop) =>
-        (document.getElementById(prop).value = data?.settings?.[prop] || "")
-    );
+    Object.keys(PROPS).forEach((propKey) => {
+      const propType = PROPS[propKey];
+      if (propType === "checkbox") {
+        document.getElementById(propKey).checked = data?.settings?.[prop];
+      } else if (propType === "text") {
+        document.getElementById(propKey).value = data?.settings?.[prop] || "";
+      }
+    });
   });
 }
 

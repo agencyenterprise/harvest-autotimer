@@ -15,17 +15,18 @@ const harvestAccountIdSet = (changes) =>
 const harvestCredentialsSet = (changes) =>
   harvestTokenSet(changes) && harvestAccountIdSet(changes);
 
-chrome.runtime.onInstalled.addListener(function () {
-  chrome.storage.onChanged.addListener(function (changes, namespace) {
-    if (namespace === "local") {
-      if (enabledChanged(changes)) {
-        updateIcon();
-      } else if (harvestCredentialsSet(changes)) {
-        enableExtension();
-      }
-    }
-  });
 
+chrome.storage.onChanged.addListener(function (changes, namespace) {
+  if (namespace === "local") {
+    if (enabledChanged(changes)) {
+      updateIcon();
+    } else if (harvestCredentialsSet(changes)) {
+      enableExtension();
+    }
+  }
+});
+
+chrome.runtime.onInstalled.addListener(function () {
   initSettings();
   openSettings();
   updateIcon();
