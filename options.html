@@ -1,38 +1,80 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="options.css" />
+    <link href="mui.min.css" rel="stylesheet" />
+    <style>
+      .mui-btn--xs.mui-btn--fab {
+        padding: 0;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+      }
+      #message {
+        display: none;
+        padding: 10px;
+        margin-top: 10px;
+      }
+      #message.error {
+        background-color: #fecaca;
+        display: block;
+      }
+      #message.success {
+        background-color: #bbf7d0;
+        display: block;
+      }
+    </style>
   </head>
   <body>
-    <h1>Settings</h1>
-    <h2>Harvest <a href="#" class="help-icon" id="harvest_help">?</a></h2>
-    <div id="harvest_help_box" style="display: none">
-      To obtain this data on Harvest, go to
-      <a href="https://id.getharvest.com/developers" target="_blank"
-        >developers page</a
-      >.<br />
-      On "Personal access tokens", click on "Create new personal access
-      token".<br />
-      Fill with any name you want and click on "Create personal access
-      token".<br />
-      On the "Your personal access token" box, copy the Token and Account ID and
-      paste on the fields below.<br />
-      Save!
+    <div class="mui-container-fluid">
+      <h1>Settings</h1>
+      <div class="mui-form">
+        <legend>
+          Harvest
+          <button
+            type="button"
+            class="mui-btn mui-btn--xs mui-btn--fab mui-btn--primary"
+            id="harvest_help"
+          >
+            ?
+          </button>
+        </legend>
+        <div id="harvest_help_box" style="display: none" class="mui-panel">
+          To obtain this data on Harvest, go to
+          <a href="https://id.getharvest.com/developers" target="_blank"
+            >developers page</a
+          >.<br />
+          On "Personal access tokens", click on "Create new personal access
+          token".<br />
+          Fill with any name you want and click on "Create personal access
+          token".<br />
+          On the "Your personal access token" box, copy the Token and Account ID
+          and paste on the fields below.<br />
+          Save!
+        </div>
+        <div class="mui-textfield">
+          <input type="text" id="harvest_token" name="harvest_token" />
+          <label for="harvest_token">Token</label>
+        </div>
+        <div class="mui-textfield">
+          <input
+            type="text"
+            id="harvest_account_id"
+            name="harvest_account_id"
+          />
+          <label for="harvest_user">Account ID</label>
+        </div>
+        <div class="mui-checkbox">
+          <label>
+            <input type="checkbox" id="enabled" name="enabled" />
+            Enabled
+          </label>
+        </div>
+        <button id="save" type="button" class="mui-btn mui-btn--primary">
+          Save
+        </button>
+        <div id="message" class="mui-panel"></div>
+      </div>
     </div>
-    <div>
-      <label for="harvest_token">Token</label>
-      <input type="text" id="harvest_token" name="harvest_token" />
-    </div>
-    <div>
-      <label for="harvest_user">Account ID</label>
-      <input type="text" id="harvest_account_id" name="harvest_account_id" />
-    </div>
-    <div>
-      <label for="enabled">Enabled</label>
-      <input type="checkbox" id="enabled" name="enabled" />
-    </div>
-    <button id="save">Save</button>
-    <div id="message"></div>
   </body>
   <script src="options.js"></script>
 </html>

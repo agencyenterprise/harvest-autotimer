@@ -31,9 +31,10 @@ function fillSettings() {
     Object.keys(PROPS).forEach((propKey) => {
       const propType = PROPS[propKey];
       if (propType === "checkbox") {
-        document.getElementById(propKey).checked = data?.settings?.[prop];
+        document.getElementById(propKey).checked = data?.settings?.[propKey];
       } else if (propType === "text") {
-        document.getElementById(propKey).value = data?.settings?.[prop] || "";
+        document.getElementById(propKey).value =
+          data?.settings?.[propKey] || "";
       }
     });
   });
