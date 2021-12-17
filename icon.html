@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+      .container {
+        max-width: min-content
+      }
+      .icon {
+        background-color: #fd7326;
+        color: #ffffff;
+      }
+      .disabled {
+        opacity: 70%;
+        background-color: #b46b44;
+        color: #c0c0c0;
+      }
+      .s48 {
+        padding: 3px;
+        width: 42px;
+        height: 42px;
+      }
+      .s16 {
+        padding:1px;
+        width: 14px;
+        height: 14px;
+      }
+      .s128 {
+        padding: 8px;
+        width: 112px;
+        height: 112px;
+      }
+      .s32 {
+        padding: 2px;
+        width: 28px;
+        height: 28px;
+      }
+    </style>
+  </head>
+  <body onload="generate()">
+    Made with ❤️ by <a href="https://ae.studio">AE.studio</a>
+    <script>
+      function exportImages() {
+        html2canvas(document.querySelector(".container")).then(canvas => {
+    document.body.appendChild(canvas)
+});
+
+      }
+      function generate() {
+        const sizes = [16, 32, 48, 128];
+        for (const size of sizes) {
+          createIcon(false, size)
+          createIcon(true, size)
+        }
+        // exportImages()
+      }
+
+      function createIcon(disabled, size) {
+        const container = document.createElement("div")
+        const id=`container-${size}-${disabled ? 'disabled' : 'enabled'}`
+        container.id = id;
+        container.className = "container";
+        const inner = document.createElement("div")
+        inner.className = `icon s${size} ${disabled ? 'disabled' : ''}`
+        inner.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 330" fill="currentColor">
+              <path d="M67.4914,31.8945 C95.7794,11.1717 129.934,0 165,0 V146.525 H133.847 V77 H91.6264 V252.135 H133.847 V190 H164.94 H196.034 V252.135 H238.014 V138.711 L320.244,109.103 C332.123,142.096 333.182,178.015 323.268,211.651 C313.353,245.286 292.981,274.889 265.106,296.163 C237.231,317.438 203.302,329.279 168.243,329.968 C133.183,330.657 98.8161,320.159 70.1263,299.996 C41.4366,279.833 19.9165,251.055 8.68788,217.835 C-2.54072,184.615 -2.89387,148.682 7.67966,115.248 C18.2532,81.8134 39.2035,52.6173 67.4914,31.8945 M238.014,138.711 V77 H196.034 V146.525 H165 V165 L238.014,138.711 " fill-rule="evenodd" fill="currentColor" clip-rule="evenodd"></path>
+              <circle stroke="currentColor" cy="165px" stroke-width="14.5px" fill="transparent" r="158px" cx="165px" ></circle>
+            </svg>
+          `;
+        container.appendChild(inner)
+        document.body.appendChild(container);
+        html2canvas(document.querySelector(`#${id}`)).then(canvas => {
+          document.body.appendChild(canvas)
+        });
+        document.body.removeChild(container)
+      }
+
+    </script>
+  </body>
+</html>

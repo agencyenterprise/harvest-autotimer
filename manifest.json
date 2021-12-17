@@ -1,14 +1,17 @@
 {
-  "name": "PivotalTracker -> Harvest",
-  "description": "Auto start/stop a timer on harvest when starting and finishing stories on Pivotal Tracker.",
-  "version": "1.2.1",
+  "name": "Harvest AutoTimer",
+  "description": "Auto start/stop a timer on Harvest when starting and finishing tasks on software management tools.",
+  "version": "1.0",
   "manifest_version": 3,
   "permissions": ["activeTab", "storage", "scripting"],
   "background": {
     "service_worker": "background.js"
   },
   "icons": {
-    "48": "/images/icon48.png"
+    "16": "/images/icon_enabled_16.png",
+    "32": "/images/icon_enabled_32.png",
+    "48": "/images/icon_enabled_48.png",
+    "128": "/images/icon_enabled_128.png"
   },
   "options_page": "options.html",
   "content_scripts": [
@@ -16,7 +19,7 @@
       "run_at": "document_start",
       "matches": ["https://*.pivotaltracker.com/*"],
       "all_frames": true,
-      "js": [ "pt.js" ]
+      "js": [ "harvest.js", "pt.js" ]
     }
   ],
   "action": {

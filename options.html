@@ -1,8 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8" />
     <link href="mui.min.css" rel="stylesheet" />
     <style>
+      html,
+      body {
+        margin: 0px;
+        height: 100%;
+      }
       .mui-btn--xs.mui-btn--fab {
         padding: 0;
         width: 24px;
@@ -22,57 +28,69 @@
         background-color: #bbf7d0;
         display: block;
       }
+      .page {
+        padding: 2rem;
+      }
+      .footer {
+        margin-top: 2rem;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
-    <div class="mui-container-fluid">
-      <h1>Settings</h1>
-      <div class="mui-form">
-        <legend>
-          Harvest
-          <button
-            type="button"
-            class="mui-btn mui-btn--xs mui-btn--fab mui-btn--primary"
-            id="harvest_help"
-          >
-            ?
+    <div class="page">
+      <div class="content mui-container-fluid">
+        <h1>Settings</h1>
+        <div class="mui-form">
+          <legend>
+            Harvest
+            <button
+              type="button"
+              class="mui-btn mui-btn--xs mui-btn--fab mui-btn--primary"
+              id="harvest_help"
+            >
+              ?
+            </button>
+          </legend>
+          <div id="harvest_help_box" style="display: none" class="mui-panel">
+            To obtain this data on Harvest, go to
+            <a href="https://id.getharvest.com/developers" target="_blank"
+              >developers page</a
+            >.<br />
+            On "Personal access tokens", click on "Create new personal access
+            token".<br />
+            Fill with any name you want and click on "Create personal access
+            token".<br />
+            On the "Your personal access token" box, copy the Token and Account
+            ID and paste on the fields below.<br />
+            Save!
+          </div>
+          <div class="mui-textfield">
+            <input type="text" id="harvest_token" name="harvest_token" />
+            <label for="harvest_token">Token</label>
+          </div>
+          <div class="mui-textfield">
+            <input
+              type="text"
+              id="harvest_account_id"
+              name="harvest_account_id"
+            />
+            <label for="harvest_user">Account ID</label>
+          </div>
+          <div class="mui-checkbox">
+            <label>
+              <input type="checkbox" id="enabled" name="enabled" />
+              Enabled
+            </label>
+          </div>
+          <button id="save" type="button" class="mui-btn mui-btn--primary">
+            Save
           </button>
-        </legend>
-        <div id="harvest_help_box" style="display: none" class="mui-panel">
-          To obtain this data on Harvest, go to
-          <a href="https://id.getharvest.com/developers" target="_blank"
-            >developers page</a
-          >.<br />
-          On "Personal access tokens", click on "Create new personal access
-          token".<br />
-          Fill with any name you want and click on "Create personal access
-          token".<br />
-          On the "Your personal access token" box, copy the Token and Account ID
-          and paste on the fields below.<br />
-          Save!
+          <div id="message" class="mui-panel"></div>
         </div>
-        <div class="mui-textfield">
-          <input type="text" id="harvest_token" name="harvest_token" />
-          <label for="harvest_token">Token</label>
-        </div>
-        <div class="mui-textfield">
-          <input
-            type="text"
-            id="harvest_account_id"
-            name="harvest_account_id"
-          />
-          <label for="harvest_user">Account ID</label>
-        </div>
-        <div class="mui-checkbox">
-          <label>
-            <input type="checkbox" id="enabled" name="enabled" />
-            Enabled
-          </label>
-        </div>
-        <button id="save" type="button" class="mui-btn mui-btn--primary">
-          Save
-        </button>
-        <div id="message" class="mui-panel"></div>
+      </div>
+      <div class="footer">
+        Made with ❤️ by <a href="https://ae.studio">AE.studio</a>
       </div>
     </div>
   </body>
