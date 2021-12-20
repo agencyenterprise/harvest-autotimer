@@ -3,7 +3,7 @@
   "description": "Auto start/stop a timer on Harvest when starting and finishing tasks on software management tools.",
   "version": "1.0",
   "manifest_version": 3,
-  "permissions": ["activeTab", "storage", "scripting"],
+  "permissions": ["activeTab", "storage"],
   "background": {
     "service_worker": "background.js"
   },
