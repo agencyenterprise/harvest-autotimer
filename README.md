@@ -1,5 +1,5 @@
-# pt-harvest
-Chrome extension to auto start/stop harvest time entry when starting/finishing a story on pivotal tracker.
+# Harvest AutoTimer
+Auto start/stop a timer on Harvest when starting and finishing tasks on software management tools.
 
 ## Manual installation
 1. Go to releases page [here](https://github.com/allangirao/pt-harvest/releases).
@@ -14,3 +14,6 @@ If you need to reconfigure this informations, you can go to the extension option
 
 ## Usage
 You can enable/disable the extension by clicking on the extension icon on the browser.
+
+## Supported Software Management Tools
+- Pivotal Tracker
