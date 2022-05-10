@@ -1,7 +1,7 @@
 {
   "name": "Harvest AutoTimer",
   "description": "Auto start/stop a timer on Harvest when starting and finishing tasks on software management tools.",
-  "version": "1.0",
+  "version": "1.0.1",
   "manifest_version": 3,
   "permissions": ["activeTab", "storage"],
   "background": {
