@@ -81,8 +81,8 @@ function getDate() {
 
   const formats = [
     { year: "numeric" },
-    { month: "numeric" },
-    { day: "numeric" },
+    { month: "2-digit" },
+    { day: "2-digit" },
   ];
   return join(new Date(), formats, "-");
 }
